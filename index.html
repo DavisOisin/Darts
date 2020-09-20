@@ -1,0 +1,433 @@
+<html>
+    <head>
+        <title>Darts</title>
+        <script src="../scripts/script.js"></script>
+        <link rel="stylesheet" href="../style/style.css">
+    </head>
+
+    <body>
+        <div id="inputSection">
+            <form id = "playerNames">
+                <p>player 1:</p>
+                <input type = "text" id = "player1Name" placeholder="player1" />
+
+                <p>And player 2:</p>
+                <input type = "text" id = "player2Name" placeholder="player2" />
+
+                <p>Starting Score:</p>
+                <input type = "number" id = "startScore" placeholder="301" />
+            </form>
+
+            <button onclick="startGame()">Start Game</button>
+
+        </div>
+
+        <div id="gameSection" style="display:none">
+            <div id="text">
+
+                <div id="p1">
+                    <p id="p1name">Player1:</p>
+                    <p id="p1score">301</p>
+                    <p id="p1turn">History:</p>
+                    <p id="p1history"></p>
+                </div>
+
+                <div id="p2">
+                    <p id="p2name">Player2:</p>
+                    <p id="p2score">301</p>
+                    <p id="p2turn">History:</p>
+                    <p id="p2history"></p>
+                </div>
+
+                <div id="gameInfo">
+                    <p id="currentturn">Player1 starts</p>
+                    <p><div id="dart">Dart 1</div></p>
+                    <p id="notice">notice</p>
+
+                    <button onlick="undoLast()">Undo last dart</button>
+
+                    <a href="index.html">Reset</a>
+
+                    <form name = "myform">
+                        <input type = "text" name = "stage" size = "20" id = "hform"/>
+                    </form>
+                </div>
+
+            </div>
+
+            <img id="theBoard" src = "../images/dart.png" alt = "dartBoard" usemap = "#tutorials"/>
+
+            <map name = "tutorials">
+
+            <area alt="0" onclick="throwdart(0)" coords="4,9,74,59" shape="rect" onMouseOver = "showHover('0')"
+            onMouseOut = "showHover('')">
+            <!-- bull -->
+            <area alt="50" onclick="throwdart(50)" coords="256,257,8" shape="circle" onMouseOver = "showHover('bull even 50')"
+            onMouseOut = "showHover('')">
+
+            <!-- 25 -->
+            <area alt="25" onclick="throwdart(25)" coords="275,254 269,269 256,273 242,266 239,251 248,241 261,237 272,248 264,251 256,249 249,253 251,261 258,263 265,256 269,253 " shape="polygon" onMouseOver = "showHover('25 odd 25')"
+            onMouseOut = "showHover('')">
+
+            <!-- 20 -->
+            <area alt="20" onclick="throwdart(20)" coords="239,148 256,146 271,149 258,237 255,237 245,184 " shape="polygon" onMouseOver = "showHover('20 even 20')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 20 -->
+            <area alt="60" onclick="throwdart(60)" coords="237,137 256,135 273,137 272,147 256,146 239,148 " shape="polygon" onMouseOver = "showHover('triple20 even 60')"
+            onMouseOut = "showHover('')">
+
+            <!-- 20 -->
+            <area alt="20" onclick="throwdart(20)" coords="228,77 254,75 282,78 274,135 256,134 239,136 " shape="polygon" onMouseOver = "showHover('20 even 20')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 20 -->
+            <area alt="40" onclick="throwdart(40)" coords="256,64 285,66 284,75 256,74 228,77 226,66 " shape="polygon" onMouseOver = "showHover('double20 even 40')"
+            onMouseOut = "showHover('')">
+
+            <!-- 1 -->
+            <area alt="1" onclick="throwdart(1)" coords="259,237 274,148 291,151 305,158 265,239 " shape="polygon"
+            onMouseOver = "showHover('1 odd 1')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 1 -->
+            <area alt="1" onclick="throwdart(3)" coords="273,146 275,138 293,142 310,150 306,157 290,150 " shape="polygon"
+            onMouseOver = "showHover('triple1 odd 3')"
+            onMouseOut = "showHover('')">
+
+            <!-- 1 -->
+            <area alt="1" onclick="throwdart(1)" coords="284,77 312,84 336,95 310,148 293,141 275,138" shape="polygon"
+            onMouseOver = "showHover('1 odd 1')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 1 -->
+            <area alt="1" onclick="throwdart(2)" coords="286,66 318,74 342,85 339,95 313,84 284,77" shape="polygon"
+            onMouseOver = "showHover('double1 even 2')"
+            onMouseOut = "showHover('')">
+
+            <!-- 18 -->
+            <area alt="1" onclick="throwdart(18)" coords="265,240 306,160 320,167 332,178 269,243" shape="polygon"
+            onMouseOver = "showHover('18 even 18')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 18 -->
+            <area alt="1" onclick="throwdart(54)" coords="311,148 328,158 341,170 333,179 322,168 306,159" shape="polygon"
+            onMouseOver = "showHover('triple18 even 54')"
+            onMouseOut = "showHover('')">
+
+            <!-- 18 -->
+            <area alt="1" onclick="throwdart(18)" coords="338,95 312,148 328,157 342,168 383,128 363,111" shape="polygon"
+            onMouseOver = "showHover('18 even 18')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 18 -->
+            <area alt="1" onclick="throwdart(36)" coords="343,85 371,101 392,121 385,127 364,111 339,94" shape="polygon"
+            onMouseOver = "showHover('double18 even 36')"
+            onMouseOut = "showHover('')">
+
+            <!-- 4 -->
+            <area alt="1" onclick="throwdart(4)" coords="270,241 333,179 345,191 353,207 274,248" shape="polygon"
+            onMouseOver = "showHover('4 even 4')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 4 -->
+            <area alt="1" onclick="throwdart(12)" coords="341,172 354,186 363,201 355,207 345,191 334,179" shape="polygon"
+            onMouseOver = "showHover('triple4 even 12')"
+            onMouseOut = "showHover('')">
+
+            <!-- 4 -->
+            <area alt="1" onclick="throwdart(4)" coords="384,127 343,170 356,189 364,202 418,174 404,150" shape="polygon"
+            onMouseOver = "showHover('4 even 4')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 4 -->
+            <area alt="1" onclick="throwdart(8)" coords="392,121 412,144 427,169 418,174 404,151 384,128" shape="polygon"
+            onMouseOver = "showHover('double4 even 8')"
+            onMouseOut = "showHover('')">
+
+            <!-- 13 -->
+            <area alt="1" onclick="throwdart(13)" coords="273,248 353,208 360,222 365,239 275,252" shape="polygon"
+            onMouseOver = "showHover('13 odd 13')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 13 -->
+            <area alt="1" onclick="throwdart(39)" coords="363,202 355,208 362,223 366,237 375,237 372,219" shape="polygon"
+            onMouseOver = "showHover('triple13 odd 39')"
+            onMouseOut = "showHover('')">
+
+            <!-- 13 -->
+            <area alt="1" onclick="throwdart(13)" coords="418,176 365,202 377,234 435,227 428,201" shape="polygon"
+            onMouseOver = "showHover('13 odd 13')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 13 -->
+            <area alt="1" onclick="throwdart(26)" coords="428,169 420,175 429,201 436,226 446,227 439,196" shape="polygon"
+            onMouseOver = "showHover('double13 even 26')"
+            onMouseOut = "showHover('')">
+
+            <!-- 6 -->
+            <area alt="1" onclick="throwdart(6)" coords="275,252 364,238 368,258 365,273 276,260" shape="polygon"
+            onMouseOver = "showHover('6 even 6')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 6 -->
+            <area alt="1" onclick="throwdart(18)" coords="375,238 364,239 368,258 366,273 374,275 377,259" shape="polygon"
+            onMouseOver = "showHover('triple6 even 18')"
+            onMouseOut = "showHover('')">
+
+            <!-- 6 -->
+            <area alt="1" onclick="throwdart(6)" coords="434,228 377,237 375,275 435,284 438,258" shape="polygon"
+            onMouseOver = "showHover('6 even 6')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 6 -->
+            <area alt="1" onclick="throwdart(12)" coords="446,227 449,258 447,286 436,284 439,258 435,228" shape="polygon"
+            onMouseOver = "showHover('double6 even 12')"
+            onMouseOut = "showHover('')">
+
+            <!-- 10 -->
+            <area alt="1" onclick="throwdart(10)" coords="273,264 353,305 364,274 275,260" shape="polygon"
+            onMouseOver = "showHover('10 even 10')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 10 -->
+            <area alt="1" onclick="throwdart(30)" coords="374,276 366,273 356,305 364,310 371,295" shape="polygon"
+            onMouseOver = "showHover('triple10 even 30')"
+            onMouseOut = "showHover('')">
+
+            <!-- 10 -->
+            <area alt="1" onclick="throwdart(10)" coords="435,285 376,276 373,294 366,310 418,338 429,312" shape="polygon"
+            onMouseOver = "showHover('10 even 10')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 10 -->
+            <area alt="1" onclick="throwdart(20)" coords="446,287 439,316 429,344 419,338 429,312 435,284" shape="polygon"
+            onMouseOver = "showHover('double10 even 20')"
+            onMouseOut = "showHover('')">
+
+            <!-- 15 -->
+            <area alt="1" onclick="throwdart(15)" coords="273,264 354,306 345,321 334,334 267,271" shape="polygon"
+            onMouseOver = "showHover('15 odd 15')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 15 -->
+            <area alt="1" onclick="throwdart(45)" coords="363,311 353,306 345,323 335,333 342,342 355,327" shape="polygon"
+            onMouseOver = "showHover('triple15 even 45')"
+            onMouseOut = "showHover('')">
+
+            <!-- 15 -->
+            <area alt="1" onclick="throwdart(15)" coords="417,338 364,312 353,330 343,342 384,385 406,362" shape="polygon"
+            onMouseOver = "showHover('15 odd 15')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 15 -->
+            <area alt="1" onclick="throwdart(30)" coords="427,344 418,340 405,364 386,384 392,392 413,369" shape="polygon"
+            onMouseOver = "showHover('double15 even 30')"
+            onMouseOut = "showHover('')">
+
+            <!-- 2 -->
+            <area alt="1" onclick="throwdart(2)" coords="265,273 269,270 332,334 307,355" shape="polygon"
+            onMouseOver = "showHover('2 even 2')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 2 -->
+            <area alt="1" onclick="throwdart(6)" coords="306,353 333,334 341,342 312,363" shape="polygon"
+            onMouseOver = "showHover('triple2 even 6')"
+            onMouseOut = "showHover('')">
+
+            <!-- 2 -->
+            <area alt="1" onclick="throwdart(2)" coords="338,417 312,365 342,343 382,384" shape="polygon"
+            onMouseOver = "showHover('2 even 2')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 2 -->
+            <area alt="1" onclick="throwdart(4)" coords="342,428 340,418 384,386 392,393 371,412" shape="polygon"
+            onMouseOver = "showHover('double2 even 4')"
+            onMouseOut = "showHover('')">
+
+            <!-- 17 -->
+            <area alt="1" onclick="throwdart(17)" coords="259,275 264,273 307,354 273,366" shape="polygon"
+            onMouseOver = "showHover('17 odd 17')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 17 -->
+            <area alt="1" onclick="throwdart(51)" coords="275,375 310,364 306,355 273,366" shape="polygon"
+            onMouseOver = "showHover('triple17 odd 51')"
+            onMouseOut = "showHover('')">
+
+            <!-- 17 -->
+            <area alt="1" onclick="throwdart(17)" coords="284,436 275,375 309,365 338,418 315,427" shape="polygon"
+            onMouseOver = "showHover('17 odd 17')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 17 -->
+            <area alt="1" onclick="throwdart(34)" coords="286,446 284,438 338,420 343,428 317,438" shape="polygon"
+            onMouseOver = "showHover('double17 even 34')"
+            onMouseOut = "showHover('')">
+
+            <!-- 3 -->
+            <area alt="1" onclick="throwdart(3)" coords="253,275 239,364 271,366 258,275" shape="polygon"
+            onMouseOver = "showHover('3 odd 3')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 3 -->
+            <area alt="1" onclick="throwdart(9)" coords="237,375 239,364 256,367 271,365 276,375 258,378" shape="polygon"
+            onMouseOver = "showHover('triple3 odd 9')"
+            onMouseOut = "showHover('')">
+
+            <!-- 3 -->
+            <area alt="1" onclick="throwdart(3)" coords="228,435 238,377 274,376 283,435 258,438" shape="polygon"
+            onMouseOver = "showHover('3 odd 3')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 3 -->
+            <area alt="1" onclick="throwdart(6)" coords="226,446 228,436 257,438 284,436 286,447 259,449" shape="polygon"
+            onMouseOver = "showHover('double3 even 6')"
+            onMouseOut = "showHover('')">
+
+            <!-- 19 -->
+            <area alt="1" onclick="throwdart(19)" coords="247,273 253,275 239,363 221,362 206,355 200,364 173,418 228,436 238,375 201,366" shape="polygon"
+            onMouseOver = "showHover('19 odd 19')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 19 -->
+            <area alt="1" onclick="throwdart(57)" coords="237,366 206,356 202,364 219,369 237,375" shape="polygon"
+            onMouseOver = "showHover('triple19 odd 57')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 19 -->
+            <area alt="1" onclick="throwdart(38)" coords="226,446 197,440 169,429 174,419 199,429 226,436" shape="polygon"
+            onMouseOver = "showHover('double19 even 38')"
+            onMouseOut = "showHover('')">
+
+            <!-- 7 -->
+            <area alt="1" onclick="throwdart(7)" coords="243,271 246,272 205,353 179,334 130,384 173,416 200,365 171,343" shape="polygon"
+            onMouseOver = "showHover('7 odd 7')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 7 -->
+            <area alt="1" onclick="throwdart(21)" coords="178,334 205,354 201,364 171,342" shape="polygon"
+            onMouseOver = "showHover('triple7 odd 21')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 7 -->
+            <area alt="1" onclick="throwdart(14)" coords="120,393 128,385 172,418 168,427 142,412" shape="polygon"
+            onMouseOver = "showHover('double7 even 14')"
+            onMouseOut = "showHover('')">
+
+            <!-- 16 -->
+            <area alt="1" onclick="throwdart(16)" coords="238,263 243,271 180,333 165,321 159,306 94,338 128,384 170,342 148,312" shape="polygon"
+            onMouseOver = "showHover('16 even 16')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 16 -->
+            <area alt="1" onclick="throwdart(48)" coords="148,311 158,326 172,341 178,334 167,321 157,306" shape="polygon"
+            onMouseOver = "showHover('triple16 even 48')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 16 -->
+            <area alt="1" onclick="throwdart(32)" coords="119,391 100,370 85,345 94,340 108,364 126,384" shape="polygon"
+            onMouseOver = "showHover('double16 even 32')"
+            onMouseOut = "showHover('')">
+
+            <!-- 8 -->
+            <area alt="1" onclick="throwdart(8)" coords="239,264 237,260 148,275 157,306 94,338 77,285 137,276 146,310" shape="polygon"
+            onMouseOver = "showHover('8 even 8')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 8 -->
+            <area alt="1" onclick="throwdart(24)" coords="137,277 148,312 157,305 148,275" shape="polygon"
+            onMouseOver = "showHover('triple8 even 24')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 8 -->
+            <area alt="1" onclick="throwdart(16)" coords="65,287 75,285 94,338 84,344 72,317" shape="polygon"
+            onMouseOver = "showHover('double8 even 16')"
+            onMouseOut = "showHover('')">
+
+            <!-- 11 -->
+            <area alt="1" onclick="throwdart(11)" coords="237,252 237,260 148,275 144,258 146,239 76,228 74,256 77,285 136,275 134,255 136,237" shape="polygon"
+            onMouseOver = "showHover('11 odd 11')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 11 -->
+            <area alt="1" onclick="throwdart(33)" coords="135,257 137,237 146,239 144,259 147,275 137,275" shape="polygon"
+            onMouseOver = "showHover('triple11 odd 33')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 11 -->
+            <area alt="1" onclick="throwdart(22)" coords="66,286 62,258 64,226 75,228 74,256 75,284" shape="polygon"
+            onMouseOver = "showHover('double11 even 22')"
+            onMouseOut = "showHover('')">
+
+            <!-- 14 -->
+            <area alt="1" onclick="throwdart(14)" coords="238,248 237,252 148,237 157,207 94,175 77,227 136,237 147,202" shape="polygon"
+            onMouseOver = "showHover('14 even 14')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 14 -->
+            <area alt="1" onclick="throwdart(42)" coords="137,236 148,202 157,206 152,222 148,238" shape="polygon"
+            onMouseOver = "showHover('triple14 even 42')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 14 -->
+            <area alt="1" onclick="throwdart(28)" coords="66,226 72,196 84,169 94,174 85,199 78,226" shape="polygon"
+            onMouseOver = "showHover('double14 even 28')"
+            onMouseOut = "showHover('')">
+
+            <!-- 9 -->
+            <area alt="1" onclick="throwdart(9)" coords="243,242 239,248 159,207 165,191 178,178 127,127 108,148 94,172 148,200 170,171" shape="polygon"
+            onMouseOver = "showHover('9 odd 9')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 9 -->
+            <area alt="1" onclick="throwdart(27)" coords="157,205 149,200 170,171 176,178" shape="polygon"
+            onMouseOver = "showHover('triple9 odd 27')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 9 -->
+            <area alt="1" onclick="throwdart(18)" coords="85,168 98,145 119,120 127,127 109,148 94,174" shape="polygon"
+            onMouseOver = "showHover('double9 even 18')"
+            onMouseOut = "showHover('')">
+
+            <!-- 12 -->
+            <area alt="1" onclick="throwdart(12)" coords="243,242 247,239 206,159 191,167 178,179 128,128 149,111 173,95 200,149 184,157 170,169" shape="polygon"
+            onMouseOver = "showHover('12 even 12')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 12 -->
+            <area alt="1" onclick="throwdart(36)" coords="170,170 183,158 201,149 207,157 192,166 178,178" shape="polygon"
+            onMouseOver = "showHover('triple12 even 36')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 12 -->
+            <area alt="1" onclick="throwdart(24)" coords="120,120 143,100 168,86 174,95 152,109 129,127" shape="polygon"
+            onMouseOver = "showHover('double12 even 24')"
+            onMouseOut = "showHover('')">
+
+            <!-- 5 -->
+            <area alt="1" onclick="throwdart(5)" coords="254,237 247,239 206,159 221,150 238,147 227,78 198,83 174,94 201,148 220,140 237,137" shape="polygon"
+            onMouseOver = "showHover('5 odd 5')"
+            onMouseOut = "showHover('')">
+
+            <!-- triple 5 -->
+            <area alt="1" onclick="throwdart(15)" coords="201,149 217,141 237,138 238,148 222,150 206,158" shape="polygon"
+            onMouseOver = "showHover('triple5 even 15')"
+            onMouseOut = "showHover('')">
+
+            <!-- double 5 -->
+            <area alt="1" onclick="throwdart(10)" coords="225,66 197,72 169,85 173,94 200,83 228,78" shape="polygon"
+            onMouseOver = "showHover('double5 odd 10')"
+            onMouseOut = "showHover('')">
+
+            </map>
+
+        </div>
+
+        <div id="victory" style="display:none">
+            <p id="winner"></p>
+            <a href="index.html">Newgame</a>
+        </div>
+
+    </body>
+</html>
