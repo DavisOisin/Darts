@@ -111,7 +111,7 @@ function throwdart(points){
 
 function checkwin(p)
 {
-   if (p.score == 0 && p.history[p.history.length - 1].includes("double"))
+   if (p.score == 0 && p.realhistory[p.realhistory.length - 1].includes("double"))
    {
       document.getElementById("victory").style.display = "inline";
       document.getElementById("winner").innerHTML = p.name + " wins!";
