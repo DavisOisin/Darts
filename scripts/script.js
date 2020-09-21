@@ -47,7 +47,20 @@ function throwdart(points){
    {
       player1.realhistory.push(document.myform.stage.value + ":" + currentDart)
       player1.score -= points;
-      player1.history.push(document.myform.stage.value);
+
+      if (currentDart == 1)
+      {
+         player1.history.push("[" + points);
+      }
+      else if (currentDart == 3)
+      {
+         player1.history.push(points + "]")
+      }
+      else
+      {
+         player1.history.push(points)
+      }
+
       checkwin(player1)
       document.getElementById("p1history").innerHTML = player1.history;
    }
@@ -55,7 +68,20 @@ function throwdart(points){
    {
       player2.realhistory.push(document.myform.stage.value + ":" + currentDart)
       player2.score -= points;
-      player2.history.push(document.myform.stage.value);
+
+      if (currentDart == 1)
+      {
+         player2.history.push("[" + points);
+      }
+      else if (currentDart == 3)
+      {
+         player2.history.push(points + "]")
+      }
+      else
+      {
+         player2.history.push(points)
+      }
+
       checkwin(player2)
       document.getElementById("p2history").innerHTML = player2.history;
    }
