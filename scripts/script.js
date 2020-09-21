@@ -45,8 +45,8 @@ function throwdart(points){
 
    if (player1.turn)
    {
-      player1.realhistory.push(document.myform.stage.value + ":" + currentDart)
       player1.score -= points;
+      player1.realhistory.push(document.myform.stage.value + ":" + currentDart + ":" + player1.score);
       player1.history.push(points)
       checkwin(player1)
       document.getElementById("p1history").innerHTML = player1.history;
@@ -89,10 +89,12 @@ function checkwin(p)
    {
       document.getElementById("victory").style.display = "inline";
       document.getElementById("winner").innerHTML = p.name + " wins!";
+      p.realhistory.push("win")
    }
    else if (p.score <= 1)
    {
       document.getElementById("notice").innerHTML = p.name + " is bust!";
+      p.realhistory.push("bust:" + currentDart + ":" + p.score);
 
       var addback = 0;
       var last;
@@ -102,10 +104,7 @@ function checkwin(p)
          addback += Number(last);
       }
       p.score += addback;
-
-      p.realhistory.push("bust:" + currentDart)
       currentDart = 3;
-      p.realhistory.push("bust")
    }
 }
 
