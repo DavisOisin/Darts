@@ -58,7 +58,7 @@ function throwdart(points){
    }
 
    document.getElementById("realhistory1").innerHTML = player1.realhistory;
-   document.getElementById("realhistory2").innerHTML = player2.realhistory;
+   //document.getElementById("realhistory2").innerHTML = player2.realhistory;
 
    displayHistory(player1)
    displayHistory(player2)
@@ -124,6 +124,7 @@ function displayHistory(p)
    var i = 1
    for (x in p.history)
    {
+      document.getElementById("realhistory2").innerHTML = x;
       if (i == 1)
       {
          distory += ("[" + x);
