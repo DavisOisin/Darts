@@ -45,17 +45,13 @@ function throwdart(points){
 
    if (player1.turn)
    {
-      player1.score -= points;
-      player1.realhistory.push(document.myform.stage.value + ":" + currentDart + ":" + player1.score);
-      player1.history.push(points)
+      updateScore(player1)
       checkwin(player1)
       document.getElementById("p1history").innerHTML = player1.history;
    }
    else
    {
-      player2.realhistory.push(document.myform.stage.value + ":" + currentDart)
-      player2.score -= points;
-      player2.history.push(points)
+      updateScore(player2)
       checkwin(player2)
       document.getElementById("p2history").innerHTML = player2.history;
    }
@@ -83,13 +79,21 @@ function throwdart(points){
    }
 }
 
+function updateScore(p)
+{
+   p.score -= points;
+   p.realhistory.push(document.myform.stage.value + ":" + currentDart + ":" + p.score);
+   p.history.push(points)
+}
+
 function checkwin(p)
 {
    if (p.score == 0 && p.realhistory[p.realhistory.length - 1].includes("double"))
    {
       document.getElementById("victory").style.display = "inline";
       document.getElementById("winner").innerHTML = p.name + " wins!";
-      p.realhistory.push("win")
+      p.realhistory.push("win");
+      document.getElementById("theBoard").style.display = "none";
    }
    else if (p.score <= 1)
    {
