@@ -58,7 +58,7 @@ function throwdart(points){
    }
 
    document.getElementById("realhistory1").innerHTML = player1.realhistory;
-   //document.getElementById("realhistory2").innerHTML = player2.realhistory;
+   document.getElementById("realhistory2").innerHTML = player2.realhistory;
 
    displayHistory(player1)
    displayHistory(player2)
@@ -99,6 +99,7 @@ function checkwin(p)
       document.getElementById("victory").style.display = "inline";
       document.getElementById("winner").innerHTML = p.name + " wins!";
       p.realhistory.push("win");
+      p.history.push("< WIN")
       document.getElementById("theBoard").style.display = "none";
    }
    else if (p.score <= 1)
@@ -113,6 +114,7 @@ function checkwin(p)
          last = p.history.pop();
          addback += Number(last);
       }
+      p.history.push("BUST")
       p.score += addback;
       currentDart = 3;
    }
@@ -120,27 +122,34 @@ function checkwin(p)
 
 function displayHistory(p)
 {
-   distory = ""
-   var i = 1
-   for (x in p.history)
-   {
-      document.getElementById("realhistory2").innerHTML = x;
-      if (i == 1)
-      {
-         distory += ("[" + x);
-      }
-      else if (i == 3)
-      {
-         distory += (x + "]")
-         i = 0;
-      }
-      else
-      {
-         distory += (x)
-      }
-      i++;
-   }
-   document.getElementById(p.id + "history").innerHTML = distory;
+    distory = ""
+    var i = 1
+    var x;
+    for (x of p.history)
+    {
+        if (x == "BUST" || x == "< WIN")
+        {
+            distory += ("[" + x + "]")
+        }
+        else
+        {
+            if (i == 1)
+            {
+                distory += (" [" + x + " ");
+            }
+            else if (i == 3)
+            {
+                distory += (" " + x + "]")
+                i = 0;
+            }
+            else
+            {
+                distory += (x)
+            }
+            i++;
+        }
+    }
+    document.getElementById(p.id + "history").innerHTML = distory;
 }
 
 function showHover(v)
