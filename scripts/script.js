@@ -75,7 +75,7 @@ function throwdart(points){
       {
          document.getElementById("currentturn").innerHTML = player2.name + "'s turn";
       }
-      currentDart = 1;
+      currentDart = 0;
    }
    currentDart += 1;
    document.getElementById("dart").innerHTML = "Dart " + currentDart;
