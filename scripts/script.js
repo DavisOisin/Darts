@@ -103,8 +103,9 @@ function checkwin(p)
       }
       p.score += addback;
 
+      p.realhistory.push("bust:" + currentDart)
       currentDart = 3;
-      p.history.push("[bust]")
+      p.realhistory.push("bust")
    }
 }
 
