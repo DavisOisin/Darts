@@ -45,13 +45,13 @@ function throwdart(points){
 
    if (player1.turn)
    {
-      updateScore(player1)
+      updateScore(player1, points)
       checkwin(player1)
       document.getElementById("p1history").innerHTML = player1.history;
    }
    else
    {
-      updateScore(player2)
+      updateScore(player2, points)
       checkwin(player2)
       document.getElementById("p2history").innerHTML = player2.history;
    }
@@ -79,7 +79,7 @@ function throwdart(points){
    }
 }
 
-function updateScore(p)
+function updateScore(p, points)
 {
    p.score -= points;
    p.realhistory.push(document.myform.stage.value + ":" + currentDart + ":" + p.score);
