@@ -60,8 +60,8 @@ function throwdart(points){
       document.getElementById("p2history").innerHTML = player2.history;
    }
 
-   window.alert(player1.realhistory)
-   window.alert(player2.realhistory)
+   document.getElementById("realhistory1").innerHTML = player1.realhistory;
+   document.getElementById("realhistory2").innerHTML = player2.realhistory;
 
    document.getElementById("p1score").innerHTML = player1.score;
    document.getElementById("p2score").innerHTML = player2.score;
