@@ -5,6 +5,7 @@ function Player(n, s, t)
     this.turn = t;
     this.dart = 0;
     this.history = [];
+    this.realhistory = []
 }
 
 
@@ -44,6 +45,7 @@ function throwdart(points){
 
    if (player1.turn)
    {
+      player1.realhistory.push(document.myform.stage.value + ":" + currentDart)
       player1.score -= points;
       player1.history.push(document.myform.stage.value);
       checkwin(player1)
@@ -51,6 +53,7 @@ function throwdart(points){
    }
    else
    {
+      player2.realhistory.push(document.myform.stage.value + ":" + currentDart)
       player2.score -= points;
       player2.history.push(document.myform.stage.value);
       checkwin(player2)
