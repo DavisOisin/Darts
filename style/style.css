@@ -9,7 +9,6 @@ body
     border-style: ridge;
     border-color: white;
     padding: 5px;
-    width: 300px;
 }
 
 #p1history, #p2history
@@ -22,6 +21,7 @@ body
 #text
 {
     float: left;
+    width: 25%;
 }
 
 #theBoard
