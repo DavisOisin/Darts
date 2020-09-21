@@ -152,6 +152,35 @@ function displayHistory(p)
     document.getElementById(p.id + "history").innerHTML = distory;
 }
 
+function undoLast()
+{
+    if (currentDart == 1)
+    {
+        currentDart = 3;
+        player1.turn = !player1.turn;
+        player2.turn = !player2.turn;
+    }
+    else
+    {
+        currentDart -= 1;
+    }
+
+    var x;
+    if (player1.turn)
+    {
+        x = player1.realhistory.pop().split(":");
+        player1.score += Number(x[2])
+
+    }
+    else
+    {
+        x = player2.realhistory.pop().split(":");
+        player2.score += Number(x[2])
+    }
+    document.getElementById("currentturn").innerHTML = player1.name + "'s turn";
+}
+
+
 function showHover(v)
 {
    document.myform.stage.value = v;
