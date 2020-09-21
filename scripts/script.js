@@ -77,7 +77,7 @@ function throwdart(points){
       }
       currentDart = 1;
    }
-
+   currentDart += 1;
    document.getElementById("dart").innerHTML = "Dart " + currentDart;
 }
 
