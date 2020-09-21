@@ -64,7 +64,6 @@ function throwdart(points){
 
    if (currentDart == 3)
    {
-      document.getElementById("dart").innerHTML = "Dart 1";
       player1.turn = !player1.turn;
       player2.turn = !player2.turn;
 
