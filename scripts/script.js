@@ -1,4 +1,4 @@
-function Player(n, s, t)
+function Player(n, s, t, id)
 {
     this.name = n;
     this.score = s;
@@ -6,6 +6,7 @@ function Player(n, s, t)
     this.dart = 0;
     this.history = [];
     this.realhistory = []
+    this.id = id
 }
 
 
@@ -26,8 +27,8 @@ function startGame()
       name2 = "player2"
    }
 
-   player1 = new Player(name1, startingScore, true);
-   player2 = new Player(name2, startingScore, false);
+   player1 = new Player(name1, startingScore, true, "p1");
+   player2 = new Player(name2, startingScore, false, "p2");
    currentDart = 1;
 
    document.getElementById("gameSection").style.display = "inline";
@@ -58,6 +59,9 @@ function throwdart(points){
 
    document.getElementById("realhistory1").innerHTML = player1.realhistory;
    document.getElementById("realhistory2").innerHTML = player2.realhistory;
+
+   displayHistory(player1)
+   displayHistory(player2)
 
    document.getElementById("p1score").innerHTML = player1.score;
    document.getElementById("p2score").innerHTML = player2.score;
@@ -112,6 +116,27 @@ function checkwin(p)
       p.score += addback;
       currentDart = 3;
    }
+}
+
+function displayHistory(p)
+{
+   distory = ""
+   for (x in p.history)
+   {
+      if (currentDart == 1)
+      {
+         distory += ("[" + x);
+      }
+      else if (currentDart == 3)
+      {
+         distory += (x + "]")
+      }
+      else
+      {
+         distory += (x)
+      }
+   }
+   document.getElementById(p.id + "history").innerHTML = distory;
 }
 
 function showHover(v)
