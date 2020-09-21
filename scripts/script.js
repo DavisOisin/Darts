@@ -28,6 +28,7 @@ function startGame()
 
    player1 = new Player(name1, startingScore, true);
    player2 = new Player(name2, startingScore, false);
+   currentDart = 1;
 
    document.getElementById("gameSection").style.display = "inline";
    document.getElementById("inputSection").style.display = "none";
@@ -40,7 +41,6 @@ function startGame()
 
 
 function throwdart(points){
-   currentDart = Number(document.getElementById("dart").innerHTML.slice(4, 6));
    document.getElementById("notice").innerHTML = "";
 
    if (player1.turn)
@@ -62,21 +62,24 @@ function throwdart(points){
    document.getElementById("p1score").innerHTML = player1.score;
    document.getElementById("p2score").innerHTML = player2.score;
 
-   document.getElementById("dart").innerHTML = "Dart " + (currentDart + 1);
-
-   if (currentDart == 3){
+   if (currentDart == 3)
+   {
       document.getElementById("dart").innerHTML = "Dart 1";
       player1.turn = !player1.turn;
       player2.turn = !player2.turn;
 
-      if (player1.turn){
+      if (player1.turn)
+      {
          document.getElementById("currentturn").innerHTML = player1.name + "'s turn";
-         }
-      else{
+      }
+      else
+      {
          document.getElementById("currentturn").innerHTML = player2.name + "'s turn";
-         }
-      currentDart = 0;
+      }
+      currentDart = 1;
    }
+
+   document.getElementById("dart").innerHTML = "Dart " + currentDart;
 }
 
 function updateScore(p, points)
