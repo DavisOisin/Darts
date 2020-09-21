@@ -121,20 +121,23 @@ function checkwin(p)
 function displayHistory(p)
 {
    distory = ""
+   var i = 1
    for (x in p.history)
    {
-      if (currentDart == 1)
+      if (i == 1)
       {
          distory += ("[" + x);
       }
-      else if (currentDart == 3)
+      else if (i == 3)
       {
          distory += (x + "]")
+         i = 0;
       }
       else
       {
          distory += (x)
       }
+      i++;
    }
    document.getElementById(p.id + "history").innerHTML = distory;
 }
