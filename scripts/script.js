@@ -128,11 +128,8 @@ function checkwin(p)
       //p.realhistory.push("bust:" + currentDart + ":" + p.score);
 
       var last;
-      for(var i = 0; i < currentDart; i++)
-      {
-         last = p.realhistory.pop();
-         p.realhistory.push(last)
-      }
+      last = p.realhistory[p.realhistory.length - currentDart];
+
       p.score = Number(last.split(":")[0]);
       currentDart = 3;
    }
