@@ -78,8 +78,8 @@ function throwdart(z){
       displayHistory(player2)
    }
 
-   document.getElementById("realhistory1").innerHTML = player1.realhistory;
-   document.getElementById("realhistory2").innerHTML = player2.realhistory;
+   //document.getElementById("realhistory1").innerHTML = player1.realhistory;
+   //document.getElementById("realhistory2").innerHTML = player2.realhistory;
 
    document.getElementById("p1score").innerHTML = player1.score;
    document.getElementById("p2score").innerHTML = player2.score;
@@ -175,7 +175,7 @@ function undoLast()
          currentDart = Number(x[2])
          document.getElementById("p1score").innerHTML = player1.score;
          document.getElementById("currentturn").innerHTML = player1.name + "'s turn";
-         document.getElementById("realhistory1").innerHTML = player1.realhistory;
+         //document.getElementById("realhistory1").innerHTML = player1.realhistory;
          displayHistory(player1)
 
       }
@@ -186,7 +186,7 @@ function undoLast()
          currentDart = Number(x[2])
          document.getElementById("p2score").innerHTML = player2.score;
          document.getElementById("currentturn").innerHTML = player2.name + "'s turn";
-         document.getElementById("realhistory2").innerHTML = player2.realhistory;
+         //document.getElementById("realhistory2").innerHTML = player2.realhistory;
          displayHistory(player2)
       }
       document.getElementById("dart").innerHTML = "Dart " + currentDart;
