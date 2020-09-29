@@ -66,18 +66,17 @@ function throwdart(points){
    {
       updateScore(player1, points)
       checkwin(player1)
+      displayHistory(player1)
    }
    else
    {
       updateScore(player2, points)
       checkwin(player2)
+      displayHistory(player2)
    }
 
    document.getElementById("realhistory1").innerHTML = player1.realhistory;
    document.getElementById("realhistory2").innerHTML = player2.realhistory;
-
-   // displayHistory(player1)
-   // displayHistory(player2)
 
    document.getElementById("p1score").innerHTML = player1.score;
    document.getElementById("p2score").innerHTML = player2.score;
@@ -123,49 +122,37 @@ function checkwin(p)
       document.getElementById("notice").innerHTML = p.name + " is bust!";
       //p.realhistory.push("bust:" + currentDart + ":" + p.score);
 
-      var addback = 0;
       var last;
       for(var i = 0; i < currentDart; i++)
       {
-         last = p.history.pop();
-         addback += Number(last);
+         last = p.realhistory.pop();
+         p.realhistory.push(last)
       }
-      p.history.push("BUST")
-      p.score += addback;
+      p.score = Number(last.split(":")[0]);
       currentDart = 3;
    }
 }
 
 function displayHistory(p)
 {
-    distory = ""
-    var i = 1
-    var x;
-    for (x of p.history)
-    {
-        if (x == "BUST" || x == "< WIN")
-        {
-            distory += ("[" + x + "]")
-        }
-        else
-        {
-            if (i == 1)
-            {
-                distory += (" [" + x + " ");
-            }
-            else if (i == 3)
-            {
-                distory += (" " + x + "]")
-                i = 0;
-            }
-            else
-            {
-                distory += (x)
-            }
-            i++;
-        }
-    }
-    document.getElementById(p.id + "history").innerHTML = distory;
+      distory = ""
+      for (x of p.realhistory)
+      {
+         x = x.split(":")
+         if (x[2] == 1)
+         {
+            distory += (" [" + x[1].split(" ")[2] + " ");
+         }
+         else if (x[2] == 3)
+         {
+            distory += (" " + x[1].split(" ")[2] + "]")
+         }
+         else
+         {
+            distory += (x[1].split(" ")[2])
+         }
+      }
+      document.getElementById(p.id + "history").innerHTML = distory;
 }
 
 function undoLast()
@@ -187,6 +174,7 @@ function undoLast()
          document.getElementById("p1score").innerHTML = player1.score;
          document.getElementById("currentturn").innerHTML = player1.name + "'s turn";
          document.getElementById("realhistory1").innerHTML = player1.realhistory;
+         displayHistory(player1)
 
       }
       else
@@ -197,6 +185,7 @@ function undoLast()
          document.getElementById("p2score").innerHTML = player2.score;
          document.getElementById("currentturn").innerHTML = player2.name + "'s turn";
          document.getElementById("realhistory2").innerHTML = player2.realhistory;
+         displayHistory(player2)
       }
       document.getElementById("dart").innerHTML = "Dart " + currentDart;
       document.getElementById("notice").innerHTML = "Dart Undone!";
