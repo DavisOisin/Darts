@@ -59,7 +59,10 @@ function startGame()
 
 
 
-function throwdart(points){
+function throwdart(z){
+   boardsection = z;
+   points = boardsection.split(" ")[2]
+
    document.getElementById("notice").innerHTML = "notice";
 
    if (player1.turn)
@@ -81,6 +84,8 @@ function throwdart(points){
 
    document.getElementById("p1score").innerHTML = player1.score;
    document.getElementById("p2score").innerHTML = player2.score;
+
+   document.getElementById("notice").innerHTML = "notice";
 
    if (currentDart == 3)
    {
@@ -105,7 +110,7 @@ function updateScore(p, points)
 {
    var prev = p.score;
    p.score -= points;
-   p.realhistory.push(prev + ":" + document.myform.stage.value + ":" + currentDart + ":" + p.score);
+   p.realhistory.push(prev + ":" + boardsection + ":" + currentDart + ":" + p.score);
    p.history.push(points)
 }
 
