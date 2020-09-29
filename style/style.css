@@ -30,3 +30,10 @@ body
     border-color: white;
     float: right;
 }
+
+#hform
+{
+    position: fixed;
+    width: 20px;
+    border: 1px solid black;
+}

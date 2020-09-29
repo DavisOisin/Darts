@@ -9,6 +9,20 @@ function Player(n, s, t, id)
     this.id = id
 }
 
+function startHover(){
+   var bsDiv = document.getElementById("hform");
+   var x, y;
+// On mousemove use event.clientX and event.clientY to set the location of the div to the location of the cursor:
+   window.addEventListener('mousemove', function(event){
+       x = event.clientX + 10;
+       y = event.clientY+ 10;                    
+       if ( typeof x !== 'undefined' ){
+           bsDiv.style.left = x + "px";
+           bsDiv.style.top = y + "px";
+       }
+   }, false);
+}
+
 
 function startGame()
 {
@@ -31,6 +45,8 @@ function startGame()
    player2 = new Player(name2, startingScore, false, "p2");
    currentDart = 1;
 
+   startHover()
+   document.getElementById("hform").style.display = "none";
    document.getElementById("gameSection").style.display = "inline";
    document.getElementById("inputSection").style.display = "none";
    document.getElementById("p1name").innerHTML = player1.name;
@@ -195,6 +211,14 @@ function undoLast()
 
 
 function showHover(v)
-{
-   document.myform.stage.value = v;
+{  
+   if (v != 'hide')
+   {
+      document.getElementById("hform").style.display = "inline";
+      document.myform.stage.value = v;
+   }
+   else
+   {
+      document.getElementById("hform").style.display = "none";
+   }
 }
