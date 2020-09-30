@@ -2,7 +2,6 @@ body
 {
     background-color: black;
     color: white;
-    cursor: url('../images/cursor.cur');
 }
 
 #p1, #p2, #gameInfo

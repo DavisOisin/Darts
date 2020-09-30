@@ -13,8 +13,8 @@ function startHover(){
    var x, y;
 // On mousemove use event.clientX and event.clientY to set the location of the div to the location of the cursor:
    window.addEventListener('mousemove', function(event){
-       x = event.clientX + 10;
-       y = event.clientY+ 10;                    
+       x = event.clientX - 15;
+       y = event.clientY + 10;                    
        if ( typeof x !== 'undefined' ){
            bsDiv.style.left = x + "px";
            bsDiv.style.top = y + "px";
@@ -216,7 +216,7 @@ function showHover(v)
    {
       document.getElementById("hform").style.display = "inline";
       document.myform.stage.value = v;
-      document.body.style.cursor = "../images/dartCursor.png";
+      document.body.style.cursor = "url('../images/cursor.cur'), auto";
    }
    else
    {
