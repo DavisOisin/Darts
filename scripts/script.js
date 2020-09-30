@@ -4,7 +4,6 @@ function Player(n, s, t, id)
     this.score = s;
     this.turn = t;
     this.dart = 0;
-    this.history = [];
     this.realhistory = []
     this.id = id
 }
@@ -110,7 +109,6 @@ function updateScore(p, points)
    var prev = p.score;
    p.score -= points;
    p.realhistory.push(prev + ":" + boardsection + ":" + currentDart + ":" + p.score);
-   p.history.push(points)
 }
 
 function checkwin(p)
@@ -119,7 +117,6 @@ function checkwin(p)
    {
       document.getElementById("victory").style.display = "inline";
       document.getElementById("winner").innerHTML = p.name + " wins!";
-      p.history.push("< WIN")
       document.getElementById("theBoard").style.display = "none";
    }
    else if (p.score <= 1)
