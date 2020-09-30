@@ -216,9 +216,11 @@ function showHover(v)
    {
       document.getElementById("hform").style.display = "inline";
       document.myform.stage.value = v;
+      document.body.style.cursor = "../images/dartCursor.png";
    }
    else
    {
       document.getElementById("hform").style.display = "none";
+      document.body.style.cursor = 'default';
    }
 }
