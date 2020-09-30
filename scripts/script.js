@@ -125,7 +125,10 @@ function checkwin(p)
    else if (p.score <= 1)
    {
       document.getElementById("notice").innerHTML = p.name + " is bust!";
-      //p.realhistory.push("bust:" + currentDart + ":" + p.score);
+      var x = p.realhistory.pop();
+      x = x.split(":");
+      x[x.length - 1] = "BUST";
+      p.realhistory.push(x.join(":"));
 
       var last;
       last = p.realhistory[p.realhistory.length - currentDart];
@@ -141,17 +144,26 @@ function displayHistory(p)
       for (x of p.realhistory)
       {
          x = x.split(":")
-         if (x[2] == 1)
+         if (x[3] == "BUST")
          {
-            distory += (" [" + x[1].split(" ")[2] + " ");
-         }
-         else if (x[2] == 3)
-         {
-            distory += (" " + x[1].split(" ")[2] + "]")
+            y = "Bust";
          }
          else
          {
-            distory += (x[1].split(" ")[2])
+            y = x[1].split(" ")[2];
+         }
+
+         if (x[2] == 1)
+         {
+            distory += (" [" + y + " ");
+         }
+         else if (x[2] == 3)
+         {
+            distory += (" " + y + "]");
+         }
+         else
+         {
+            distory += (y);
          }
       }
       document.getElementById(p.id + "history").innerHTML = distory;
